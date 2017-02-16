@@ -13,39 +13,88 @@
 	<link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-  <div class="fluid-container">	
+  <div class="fluid-container wrapper">	
     <div class="headboard">
       <div class="logo">
         <a href="#"><span><img src="img/logo.png" class="logo"></span></a>
       </div>
-
-      <div class="board-canvas">
-      <div id="board">
+    </div>   
+    
+      <section class="board-canvas">
         <div class="js-list list-wrapper">
           <div class="list js-list-content">
             <div class="list-header">
-              <h2>Inbox</h2>
-              <div>
-                <input type="text" name="">
+                <div class="" id="add-task-modal">
+                  <div class=" js-add-list list-wrapper mod-add">
+                    <ul>
+                        <li>
+                          <a href="#" id="add-task" class="add-task">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true">Añadir una tarjeta...</span>
+                          </a>
+
+                          <input class="list-name-input" type="text" name="name" placeholder="Añadir una lista..." autocomplete="off" dir="auto" maxlength="512">
+                        </li>
+                        <li>
+                          <textarea name="description" placeholder="Description"></textarea>
+                        </li>
+                        <li>
+                          <input type="text" name="remote_url" placeholder="Remote Task URL">
+                        </li>
+                        <li>
+                          <input type="text" name="assigned_to" placeholder="Assigned To">
+                        </li>
+                        <li>
+                          <div>
+                            <input type="submit" name="create_task" value="Guardar">
+                            <a class="icon-lg icon-close dark-hover js-cancel-edit" href="#">
+                              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </a>
+                          </div>
+                        </li>
+                      </ul>
+                    <form action="" method="post" class="add-task-form" name="add_task">
+                      
+                    </form>
+                </div>  
               </div>
-            </div>
+            </div class="js-add-list list-wrapper mod-add">
+            <!-- Inserta nuevas listas --> 
+             
+          
           </div>
         </div>
-      </div>
-        
-        <div class="content">
-          
-        </div>
-      </div>
-    </div>	      
-    <!--<h1>Trello Dashboard</h1>		
-        <form class="form-horizontal" id="boards_form">		        
-          <div class="form-group">		         
-            <label class="control-label">Choose your board</label>		          
-            <select class="form-control" id="boards"></select>		        
-          </div>		      
-        </form>-->		   
-  </div> 		  
-</body>
+      </section>
 
-  <script src="http://code.jquery.com/jquery-1.11.3.min.js" type="text/javascript"></script>		  <script src="https://api.trello.com/1/client.js?key=[AppKey]"></script>		  		  <script type="text/javascript">		    var loadedBoards = function(boards) {		      $.each(boards, function(index, value) {		        $('#boards')		          .append($("<option></option>")		          .attr("value",value.id)		          .text(value.name)); 		      });		    };		    var loadBoards = function() {		      //Get the users boards		      Trello.get(		        '/members/me/boards/',		        loadedBoards,		        function() { console.log("Failed to load boards"); }		      );		    };		    		    Trello.authorize({		      type: "popup",		      name: "Trello dashboard",		      scope: {		        read: true,		        write: false },		      expiration: "never",		      success: loadBoards,		      error: function() { console.log("Failed authentication"); }		    });		  </script>		</html>
+      <footer>
+      
+        <ul class="controls">
+          <li data-tooltip="Drag A Task Here To Delete">
+            <a href="#" class="remove" id="remove">
+              <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li data-tooltip="Add Task">
+            <a href="#" id="add-task" class="add-task">
+              <img src="app/assets/images/plus.svg" alt="">
+            </a>
+          </li>
+        </ul>
+      </footer>
+    </div>
+    
+    <div id="removed-task-notification" class="removed-task-notification hide"></div>
+    
+    
+
+      
+   
+    
+    <div class="hide" id="tips">
+      Double click on the task text to edit it <br> <span>(Task titles are not editable for now)</span>
+    </div> 
+  
+     
+    	      	   
+  	  
+</body>
+</html>
